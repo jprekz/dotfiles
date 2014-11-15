@@ -36,7 +36,7 @@ NeoBundleCheck
 
 
 " plugin settings
-"--------------------
+"---------------------------------------
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -55,7 +55,7 @@ let g:AutoPairsFlyMode=1
 
 
 " plugin keymap
-"--------------------
+"---------------------------------------
 " neocomplete
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
@@ -91,7 +91,7 @@ nnoremap <silent> [filer]t :<C-u>VimFilerTab<CR>
 
 
 " general settings
-"--------------------
+"---------------------------------------
 if has('win32')
   set shell=powershell.exe
 endif
@@ -124,7 +124,7 @@ set noundofile
 
 
 " general keymap
-"--------------------
+"---------------------------------------
 " ZZ ZQ Q を封印
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
