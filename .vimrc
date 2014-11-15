@@ -52,6 +52,14 @@ let g:lightline = {
 \}
 " auto-pairs
 let g:AutoPairsFlyMode=1
+" Quickrun
+let g:quickrun_config = {
+\ '_': {
+\   'runner': 'vimproc',
+\   'runner/vimproc/updatetime': 60,
+\   'hook/time/enable': 1,
+\ },
+\}
 
 
 " plugin keymap
@@ -88,6 +96,8 @@ nnoremap [filer] <Nop>
 nmap <Space>f [filer]
 nnoremap <silent> [filer]f :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
 nnoremap <silent> [filer]t :<C-u>VimFilerTab<CR>
+" quickrun
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 
 
 " general settings
@@ -99,19 +109,19 @@ set number
 set ruler
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+set wrap
+set cursorline
+set scrolloff=5
 set incsearch
 set hlsearch
-set wrap
 set showmatch
 set whichwrap=h,l
 set ignorecase
 set smartcase
 set hidden
+set splitright
 set history=100
-set autoindent
 set noexpandtab
-set cursorline
-set scrolloff=5
 set tabstop=4
 set shiftwidth=4
 set autoindent
