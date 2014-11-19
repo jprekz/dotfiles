@@ -103,7 +103,14 @@ nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() 
 " general settings
 "---------------------------------------
 if has('win32')
+  autocmd! vimrcEx
   set shell=powershell.exe
+endif
+if has('Unix')
+  set mouse=a
+  set guioptions+=a
+  set ttymouse=xterm2
+  colo monokai-rekz "customized theme
 endif
 set number
 set ruler
@@ -111,6 +118,9 @@ set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 set wrap
 set cursorline
+set showtabline=2
+set laststatus=2
+set cmdheight=2
 set scrolloff=5
 set incsearch
 set hlsearch
@@ -127,7 +137,6 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set clipboard=unnamed
-autocmd! vimrcEx
 set nobackup
 set noswapfile
 set noundofile
@@ -149,7 +158,7 @@ noremap <C-j> gT
 noremap! <C-j> gT
 noremap <C-k> gt
 noremap! <C-k> gt
-" Ctrl+SpaceでEsc
+" Ctrl+SpaceでEsc(端末だと効かない)
 noremap <C-Space> <Esc>
 noremap! <C-Space> <Esc>
 " Enterで空行挿入
@@ -157,6 +166,7 @@ nnoremap <CR> o<Esc>
 nnoremap <S-CR> O<Esc>
 " F5でvimrcを開く
 nnoremap <F5> :<C-u>tabedit $MYVIMRC<CR>
+" Quick help
 nnoremap <C-h> :<C-u>help<Space>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>

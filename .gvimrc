@@ -36,8 +36,6 @@ endif
 set guioptions-=m
 " ツールバーを削除
 set guioptions-=T
-" タブバーを常に表示
-set showtabline=2
 " gvimでもテキストベースのタブページを使う
 set guioptions-=e
 " F6でgvimrcを開く
