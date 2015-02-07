@@ -1,16 +1,14 @@
 " jprekz's gvimrc
 
-" カラー設定(改造済み)
-colorscheme monokai-rekz
+" カラー設定
+colorscheme hybrid
 " フォント設定
 if has('win32')
   " Windows用
-  " やったぜUnicode
   set encoding=utf-8
   set guifont=Consolas:h13
   set guifontwide=MeiryoKe_Gothic:h13
   set rop=type:directx
-  " 行間隔の設定
   set linespace=1
 endif
 

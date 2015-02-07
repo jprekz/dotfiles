@@ -21,12 +21,13 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'amdt/vim-niji'
+NeoBundle 'groenewege/vim-less'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'othree/html5.vim'
 NeoBundle 'thinca/vim-fontzoom'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'w0ng/vim-hybrid'
 call neobundle#end()
 " Required:
 filetype plugin indent on
@@ -50,8 +51,6 @@ let g:unite_source_file_mru_limit=200
 let g:lightline = {
 \ 'colorscheme': 'wombat',
 \}
-" auto-pairs
-let g:AutoPairsFlyMode=1
 " Quickrun
 let g:quickrun_config = {
 \ '_': {
@@ -140,6 +139,7 @@ set clipboard=unnamed
 set nobackup
 set noswapfile
 set noundofile
+autocmd FileType less setlocal expandtab shiftwidth=2
 
 
 " general keymap
@@ -152,7 +152,7 @@ nnoremap Q gq
 noremap J <C-d>
 noremap K <C-u>
 noremap H ^
-noremap L &
+noremap L $
 " タブ移動
 noremap <C-j> gT
 noremap! <C-j> gT
