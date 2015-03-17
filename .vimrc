@@ -22,6 +22,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'amdt/vim-niji'
+NeoBundle 'crusoexia/vim-monokai'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'othree/html5.vim'
@@ -82,6 +83,7 @@ nnoremap <C-F7> :<C-u>QuickRun<Space>-args<Space>''<Left>
 nnoremap <F8> :<C-u>QuickRun<Space>-runner<Space>shell<CR>
 nnoremap <S-F8> :<C-u>QuickRun<Space>-runner<Space>shell<Space>
 nnoremap <C-F8> :<C-u>QuickRun<Space>-runner<Space>shell<Space>-args<Space>''<Left>
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 " Unite
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
@@ -95,8 +97,6 @@ nnoremap [filer] <Nop>
 nmap <Space>f [filer]
 nnoremap <silent> [filer]f :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
 nnoremap <silent> [filer]t :<C-u>VimFilerTab<CR>
-" quickrun
-nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 
 
 " general settings
@@ -109,7 +109,7 @@ if has('Unix')
   set mouse=a
   set guioptions+=a
   set ttymouse=xterm2
-  colo monokai-rekz "customized theme
+  colo monokai
 endif
 set number
 set ruler
@@ -139,7 +139,9 @@ set clipboard=unnamed
 set nobackup
 set noswapfile
 set noundofile
+autocmd FileType html setlocal expandtab shiftwidth=2
 autocmd FileType less setlocal expandtab shiftwidth=2
+autocmd FileType scheme setlocal expandtab
 
 
 " general keymap
@@ -149,15 +151,17 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q gq
 " カーソル移動
+noremap j gj
+noremap k gk
 noremap J <C-d>
 noremap K <C-u>
 noremap H ^
 noremap L $
 " タブ移動
-noremap <C-j> gT
-noremap! <C-j> gT
-noremap <C-k> gt
-noremap! <C-k> gt
+noremap <C-tab> gt
+noremap! <C-tab> gt
+noremap <C-S-tab> gT
+noremap! <C-S-tab> gT
 " Ctrl+SpaceでEsc(端末だと効かない)
 noremap <C-Space> <Esc>
 noremap! <C-Space> <Esc>

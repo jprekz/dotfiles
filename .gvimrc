@@ -1,7 +1,7 @@
 " jprekz's gvimrc
 
 " カラー設定
-colorscheme hybrid
+colorscheme monokai
 " フォント設定
 if has('win32')
   " Windows用
