@@ -6,7 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
-alias ls="ls --color=auto"
+alias ls="ls -lF --color=auto"
 alias ll="ls -lF --color=auto"
 alias la="ls -AlF --color=auto"
 
