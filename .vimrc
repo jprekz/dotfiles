@@ -109,7 +109,7 @@ if has('Unix')
   set mouse=a
   set guioptions+=a
   set ttymouse=xterm2
-  colo monokai
+  color hybrid
 endif
 set number
 set ruler
