@@ -3,35 +3,40 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
+let $VIMBUNDLE = '~/.vim/bundle'
+let $NEOBUNDLEPATH = $VIMBUNDLE . '/neobundle.vim'
+
 if has('vim_starting')
   set nocompatible               " Be iMproved
   syntax enable
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  " why not working
+  " if isdirectory($VIMBUNDLE)
+    set runtimepath+=$NEOBUNDLEPATH
+  " endif
 endif
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'PProvost/vim-ps1'
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'amdt/vim-niji'
-NeoBundle 'crusoexia/vim-monokai'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'thinca/vim-fontzoom'
-NeoBundle 'w0ng/vim-hybrid'
-call neobundle#end()
-" Required:
-filetype plugin indent on
-NeoBundleCheck
-
+if stridx(&runtimepath, $NEOBUNDLEPATH) != -1
+  " Required:
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  " Let NeoBundle manage NeoBundle
+  " Required:
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  NeoBundle 'Shougo/neocomplete'
+  NeoBundle 'Shougo/neomru.vim'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/vimfiler.vim'
+  NeoBundle 'amdt/vim-niji'
+  NeoBundle 'crusoexia/vim-monokai'
+  NeoBundle 'itchyny/lightline.vim'
+  NeoBundle 'thinca/vim-fontzoom'
+  NeoBundle 'w0ng/vim-hybrid'
+  call neobundle#end()
+  " Required:
+  filetype plugin indent on
+  NeoBundleCheck
+else
+  echomsg 'Caution: No NeoBundle'
+endif
 
 " plugin settings
 "---------------------------------------
@@ -154,4 +159,3 @@ nnoremap <F5> :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <C-h> :<C-u>help<Space>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
-
