@@ -9,10 +9,9 @@ let $NEOBUNDLEPATH = $VIMBUNDLE . '/neobundle.vim'
 if has('vim_starting')
   set nocompatible               " Be iMproved
   syntax enable
-  " why not working
-  " if isdirectory($VIMBUNDLE)
+  if isdirectory(expand($NEOBUNDLEPATH))
     set runtimepath+=$NEOBUNDLEPATH
-  " endif
+  endif
 endif
 
 if stridx(&runtimepath, $NEOBUNDLEPATH) != -1
