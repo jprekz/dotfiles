@@ -7,7 +7,7 @@ if has('win32')
   " Windows用
   set encoding=utf-8
   set guifont=Consolas:h13
-  set guifontwide=MeiryoKe_Gothic:h13
+  set guifontwide="IPAゴシック":h13
   set rop=type:directx
   set linespace=1
 endif
