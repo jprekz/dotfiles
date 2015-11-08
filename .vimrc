@@ -26,7 +26,6 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'thinca/vim-fontzoom'
-NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'w0ng/vim-hybrid'
 call neobundle#end()
 " Required:
@@ -49,14 +48,6 @@ let g:unite_source_file_mru_limit=200
 let g:lightline = {
 \ 'colorscheme': 'wombat',
 \}
-" Quickrun
-let g:quickrun_config = {
-\ '_': {
-\   'runner': 'vimproc',
-\   'runner/vimproc/updatetime': 60,
-\   'hook/time/enable': 1,
-\ },
-\}
 
 
 " plugin keymap
@@ -73,14 +64,6 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Quickrun
-nnoremap <F7> :<C-u>QuickRun<CR>
-nnoremap <S-F7> :<C-u>QuickRun<Space>
-nnoremap <C-F7> :<C-u>QuickRun<Space>-args<Space>''<Left>
-nnoremap <F8> :<C-u>QuickRun<Space>-runner<Space>shell<CR>
-nnoremap <S-F8> :<C-u>QuickRun<Space>-runner<Space>shell<Space>
-nnoremap <C-F8> :<C-u>QuickRun<Space>-runner<Space>shell<Space>-args<Space>''<Left>
-nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 " Unite
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
