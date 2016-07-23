@@ -100,7 +100,7 @@ set ruler
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 set wrap
-set cursorline
+set nocursorline
 set showtabline=2
 set laststatus=2
 set cmdheight=2
@@ -114,7 +114,7 @@ set smartcase
 set hidden
 set splitright
 set history=100
-set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set autoindent
