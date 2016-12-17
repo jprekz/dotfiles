@@ -1,15 +1,15 @@
 " jprekz's gvimrc
 
 " カラー設定
-colorscheme hybrid
+colorscheme slate
+
 " フォント設定
 if has('win32')
   " Windows用
   set encoding=utf-8
   set guifont=Consolas:h13
-  set guifontwide="IPAゴシック":h13
+  set guifontwide=MS_Gothic:h13
   set rop=type:directx
-  set linespace=1
 endif
 
 " ウィンドウの位置とサイズを記憶する
@@ -38,3 +38,4 @@ set guioptions-=T
 set guioptions-=e
 " F6でgvimrcを開く
 nnoremap <F6> :<C-u>tabedit $MYGVIMRC<CR>
+

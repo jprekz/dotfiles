@@ -1,41 +1,39 @@
 " jprekz's vimrc
 
-" Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-let $VIMBUNDLE = '~/.vim/bundle'
-let $NEOBUNDLEPATH = $VIMBUNDLE . '/neobundle.vim'
+if &compatible
+  set nocompatible
+endif
+set shellslash
 
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-  syntax enable
-  if isdirectory(expand($NEOBUNDLEPATH))
-    set runtimepath+=$NEOBUNDLEPATH
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
   endif
+  let &runtimepath = s:dein_repo_dir .",". &runtimepath
+endif
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/neocomplete')
+  call dein#add('Shougo/vimfiler.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('itchyny/lightline.vim')
+  call dein#end()
+  call dein#save_state()
+endif
+if dein#check_install()
+  call dein#install()
 endif
 
-if stridx(&runtimepath, $NEOBUNDLEPATH) != -1
-  " Required:
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  " Let NeoBundle manage NeoBundle
-  " Required:
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  NeoBundle 'Shougo/neocomplete'
-  NeoBundle 'Shougo/neomru.vim'
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/vimfiler.vim'
-  NeoBundle 'amdt/vim-niji'
-  NeoBundle 'crusoexia/vim-monokai'
-  NeoBundle 'itchyny/lightline.vim'
-  NeoBundle 'thinca/vim-fontzoom'
-  NeoBundle 'w0ng/vim-hybrid'
-  call neobundle#end()
-  " Required:
-  filetype plugin indent on
-  NeoBundleCheck
-else
-  echomsg 'Caution: No NeoBundle'
-endif
+filetype plugin indent on
+syntax enable
+
+
 
 " plugin settings
 "---------------------------------------
@@ -93,7 +91,6 @@ if has('Unix')
   set mouse=a
   set guioptions+=a
   set ttymouse=xterm2
-  color hybrid
 endif
 set number
 set ruler
@@ -123,9 +120,10 @@ set clipboard=unnamed
 set nobackup
 set noswapfile
 set noundofile
+autocmd FileType vim setlocal expandtab shiftwidth=2
 autocmd FileType html setlocal expandtab shiftwidth=2
 autocmd FileType less setlocal expandtab shiftwidth=2
-autocmd FileType scheme setlocal expandtab
+
 
 
 " general keymap
@@ -146,15 +144,10 @@ noremap <C-tab> gt
 noremap! <C-tab> gt
 noremap <C-S-tab> gT
 noremap! <C-S-tab> gT
-" Ctrl+SpaceでEsc(端末だと効かない)
-noremap <C-Space> <Esc>
-noremap! <C-Space> <Esc>
-" Enterで空行挿入
-nnoremap <CR> o<Esc>
-nnoremap <S-CR> O<Esc>
-" F5でvimrcを開く
-nnoremap <F5> :<C-u>tabedit $MYVIMRC<CR>
-" Quick help
-nnoremap <C-h> :<C-u>help<Space>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
+" Quick help
+nnoremap <C-h> :<C-u>help<Space>
+" F5でvimrcを開く
+nnoremap <F5> :<C-u>tabedit $MYVIMRC<CR>
+
