@@ -18,11 +18,15 @@ endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#add('Shougo/dein.vim')
-  call dein#add('Shougo/neocomplete')
+  if has('lua')
+    call dein#add('Shougo/neocomplete')
+  endif
   call dein#add('Shougo/vimfiler.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/neomru.vim')
   call dein#add('itchyny/lightline.vim')
+  call dein#add('rust-lang/rust.vim')
+  call dein#add('w0ng/vim-hybrid')
   call dein#end()
   call dein#save_state()
 endif
@@ -38,10 +42,12 @@ syntax enable
 " plugin settings
 "---------------------------------------
 " neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+if has('lua')
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+endif
 " Unite
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
@@ -55,17 +61,19 @@ let g:lightline = {
 " plugin keymap
 "---------------------------------------
 " neocomplete
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-endfunction
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
+if has('lua')
+  inoremap <expr><C-g>     neocomplete#undo_completion()
+  inoremap <expr><C-l>     neocomplete#complete_common_string()
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return neocomplete#close_popup() . "\<CR>"
+  endfunction
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y>  neocomplete#close_popup()
+  inoremap <expr><C-e>  neocomplete#cancel_popup()
+endif
 " Unite
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
@@ -83,6 +91,8 @@ nnoremap <silent> [filer]t :<C-u>VimFilerTab<CR>
 
 " general settings
 "---------------------------------------
+set background=dark
+colorscheme hybrid
 if has('win32')
   autocmd! vimrcEx
   set shell=powershell.exe
@@ -96,6 +106,7 @@ set number
 set ruler
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+set backspace=indent,eol,start
 set wrap
 set nocursorline
 set showtabline=2
@@ -114,6 +125,7 @@ set history=100
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set autoindent
 set smartindent
 set clipboard=unnamed
