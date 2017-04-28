@@ -21,11 +21,13 @@ if dein#load_state(s:dein_dir)
   if has('lua')
     call dein#add('Shougo/neocomplete')
   endif
+  call dein#add('vim-syntastic/syntastic')
   call dein#add('Shougo/vimfiler.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/neomru.vim')
   call dein#add('itchyny/lightline.vim')
-  call dein#add('rust-lang/rust.vim')
+  " call dein#add('rust-lang/rust.vim')
+  call dein#add('jlevesy/rust.vim') " cargo enabled version
   call dein#add('w0ng/vim-hybrid')
   call dein#end()
   call dein#save_state()
@@ -48,13 +50,30 @@ if has('lua')
   let g:neocomplete#sources#syntax#min_keyword_length = 3
   let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 endif
+" Syntastic
+let g:syntastic_rust_checkers = ['cargo']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " Unite
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit=200
 " lightline
 let g:lightline = {
-\ 'colorscheme': 'wombat',
+\  'colorscheme': 'wombat',
+\  'active': {
+\    'right': [ [ 'syntastic', 'lineinfo' ],
+\               [ 'percent' ],
+\               [ 'fileformat', 'fileencoding', 'filetype' ] ]
+\  },
+\  'component_expand': {
+\    'syntastic': 'SyntasticStatuslineFlag',
+\  },
+\  'component_type': {
+\    'syntastic': 'error',
+\  }
 \}
 
 
@@ -132,9 +151,9 @@ set clipboard=unnamed
 set nobackup
 set noswapfile
 set noundofile
-autocmd FileType vim setlocal expandtab shiftwidth=2
-autocmd FileType html setlocal expandtab shiftwidth=2
-autocmd FileType less setlocal expandtab shiftwidth=2
+autocmd FileType vim setlocal shiftwidth=2
+autocmd FileType html setlocal shiftwidth=2
+autocmd FileType less setlocal shiftwidth=2
 
 
 
