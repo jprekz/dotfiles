@@ -94,8 +94,7 @@ nnoremap <silent> [filer]t :<C-u>VimFilerTab<CR>
 set background=dark
 colorscheme hybrid
 if has('win32')
-  autocmd! vimrcEx
-  set shell=powershell.exe
+  " autocmd! vimrcEx
 endif
 if has('Unix')
   set mouse=a
@@ -151,11 +150,8 @@ noremap J <C-d>
 noremap K <C-u>
 noremap H ^
 noremap L $
-" タブ移動
-noremap <C-tab> gt
-noremap! <C-tab> gt
-noremap <C-S-tab> gT
-noremap! <C-S-tab> gT
+" コロンとセミコロンを入れ替え
+noremap ; :
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 " Quick help
