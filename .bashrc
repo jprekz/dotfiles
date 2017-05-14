@@ -15,9 +15,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias du='du -h'
 
-# Use plain vim.
-alias nvim='vim -N -u NONE -i NONE'
-
 sysname=`uname -s | sed -e "s/\([a-zA-Z]\+\).*/\1/"`
 if [ "$sysname" = "MINGW" ] || [ "$sysname" = "MSYS" ]; then
 	alias code='code.cmd'
