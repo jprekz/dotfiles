@@ -18,9 +18,6 @@ endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#add('Shougo/dein.vim')
-  if has('lua')
-    call dein#add('Shougo/neocomplete')
-  endif
   call dein#add('vim-syntastic/syntastic')
   call dein#add('Shougo/vimfiler.vim')
   call dein#add('Shougo/unite.vim')
@@ -43,13 +40,6 @@ syntax enable
 
 " plugin settings
 "---------------------------------------
-" neocomplete
-if has('lua')
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
-  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-endif
 " Syntastic
 let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_always_populate_loc_list = 1
@@ -79,20 +69,6 @@ let g:lightline = {
 
 " plugin keymap
 "---------------------------------------
-" neocomplete
-if has('lua')
-  inoremap <expr><C-g>     neocomplete#undo_completion()
-  inoremap <expr><C-l>     neocomplete#complete_common_string()
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function()
-    return neocomplete#close_popup() . "\<CR>"
-  endfunction
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y>  neocomplete#close_popup()
-  inoremap <expr><C-e>  neocomplete#cancel_popup()
-endif
 " Unite
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
