@@ -25,6 +25,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('itchyny/lightline.vim')
   " call dein#add('rust-lang/rust.vim')
   call dein#add('jlevesy/rust.vim') " cargo enabled version
+  call dein#add('racer-rust/vim-racer')
   call dein#add('w0ng/vim-hybrid')
   call dein#end()
   call dein#save_state()
@@ -65,6 +66,8 @@ let g:lightline = {
 \    'syntastic': 'error',
 \  }
 \}
+" vim-racer
+let g:racer_experimental_completer = 1
 
 
 " plugin keymap
@@ -82,6 +85,10 @@ nnoremap [filer] <Nop>
 nmap <Space>f [filer]
 nnoremap <silent> [filer]f :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
 nnoremap <silent> [filer]t :<C-u>VimFilerTab<CR>
+" vim-racer
+autocmd FileType rust nmap gd        <Plug>(rust-def)
+autocmd FileType rust nmap <Space>gd <Plug>(rust-doc)
+
 
 
 " general settings
@@ -126,6 +133,7 @@ set clipboard=unnamed
 set nobackup
 set noswapfile
 set noundofile
+set completeopt=menuone
 autocmd FileType vim setlocal shiftwidth=2
 autocmd FileType html setlocal shiftwidth=2
 autocmd FileType less setlocal shiftwidth=2
