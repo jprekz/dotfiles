@@ -21,7 +21,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-syntastic/syntastic')
   call dein#add('Shougo/vimfiler.vim')
   call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/neomru.vim')
   call dein#add('itchyny/lightline.vim')
   " call dein#add('rust-lang/rust.vim')
   call dein#add('jlevesy/rust.vim') " cargo enabled version
@@ -75,11 +74,11 @@ let g:racer_experimental_completer = 1
 " Unite
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
-nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
 nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> [unite]u :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> [unite]r :<C-u>Unite register<CR>
+nnoremap <silent> [unite]u :<C-u>Unite file buffer<CR>
+nnoremap [unite]<Space> :<C-u>Unite<Space>
 " VimFiler
 nnoremap [filer] <Nop>
 nmap <Space>f [filer]
@@ -137,6 +136,10 @@ set completeopt=menuone
 autocmd FileType vim setlocal shiftwidth=2
 autocmd FileType html setlocal shiftwidth=2
 autocmd FileType less setlocal shiftwidth=2
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
 
 
 
