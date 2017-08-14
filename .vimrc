@@ -108,7 +108,7 @@ set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 set backspace=indent,eol,start
 set wrap
-set nocursorline
+set cursorline
 set showtabline=2
 set laststatus=2
 set cmdheight=2
@@ -140,6 +140,7 @@ autocmd FileType less setlocal shiftwidth=2
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
+let g:newrw_sizestyle = "h"
 
 
 
@@ -160,8 +161,6 @@ noremap L $
 noremap ; :
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
-" Quick help
-nnoremap <C-h> :<C-u>help<Space>
 " F5でvimrcを開く
 nnoremap <F5> :<C-u>tabedit $MYVIMRC<CR>
 
