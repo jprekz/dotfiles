@@ -1,3 +1,5 @@
 [user]
 	email = jprekz@users.noreply.github.com
 	name = jprekz
+[core]
+	filemode = false
