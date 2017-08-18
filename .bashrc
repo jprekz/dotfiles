@@ -9,7 +9,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # bash options
-HISCONTROL=erasedups
+HISTCONTROL=erasedups
 HISTIGNORE=cd:ls
 
 # User specific aliases and functions
