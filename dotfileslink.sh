@@ -1,6 +1,6 @@
 #!/bin/sh
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.gvimrc ~/.gvimrc
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/.inputrc ~/.inputrc
-ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.gvimrc ~/.gvimrc
+ln -s ~/dotfiles/.bashrc ~/.bashrc
+ln -s ~/dotfiles/.inputrc ~/.inputrc
+ln -s ~/dotfiles/.gitconfig ~/.gitconfig
