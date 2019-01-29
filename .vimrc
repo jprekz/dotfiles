@@ -63,6 +63,7 @@ let g:lightline = {
 let g:racer_experimental_completer=1
 
 
+
 " plugin keymap
 "---------------------------------------
 " vim-racer
@@ -75,16 +76,12 @@ autocmd FileType rust nmap <Space>gd <Plug>(rust-doc)
 "---------------------------------------
 set background=dark
 colorscheme hybrid
-if has('win32')
-  " autocmd! vimrcEx
-endif
 if has('Unix')
   set mouse=a
   set guioptions+=a
   set ttymouse=xterm2
 endif
 set number
-set ruler
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 set backspace=indent,eol,start
@@ -92,7 +89,7 @@ set wrap
 set cursorline
 set showtabline=2
 set laststatus=2
-set cmdheight=2
+set cmdheight=1
 set scrolloff=5
 set incsearch
 set hlsearch
