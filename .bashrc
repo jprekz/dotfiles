@@ -34,14 +34,15 @@ darwin*)
     ;;
 esac
 
+d() {
+    if [ "$@" ]; then
+        \cd "$@"
+    fi && ls -alh --time-style=long-iso
+}
+
 _sysname=`uname -s | sed -e "s/\([a-zA-Z]\+\).*/\1/"`
 if [ "$_sysname" = "Linux" ]; then
     PS1='\[\e]0;\u@\h \w\a\]\n\[\033[01;32m\]\u@\h \[\033[33m\]\w\[\033[00m\]\n\$ '
-elif [ "$_sysname" = "MINGW" ] || [ "$_sysname" = "MSYS" ]; then
-    # LANG=ja_JP.sjis
-    # JLESSCHARSET="japanese-sjis"
-    # OUTPUT_CHARSET=sjis
-    :
 fi
 unset _sysname
 
