@@ -133,10 +133,6 @@ noremap j gj
 noremap k gk
 noremap J <C-d>
 noremap K <C-u>
-noremap H ^
-noremap L $
-" コロンとセミコロンを入れ替え
-noremap ; :
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 " F5でvimrcを開く
