@@ -1,4 +1,14 @@
-cmd /c mklink %HOMEPATH%"\.vimrc" %HOMEPATH%"\dotfiles\.vimrc"
-cmd /c mklink %HOMEPATH%"\.bashrc" %HOMEPATH%"\dotfiles\.bashrc"
-cmd /c mklink %HOMEPATH%"\.inputrc" %HOMEPATH%"\dotfiles\.inputrc"
-cmd /c mklink %HOMEPATH%"\.gitconfig" %HOMEPATH%"\dotfiles\.gitconfig"
+# admin only
+
+$files = @(
+    ".vimrc"
+    ".bashrc"
+    ".inputrc"
+    ".gitconfig"
+)
+
+$here = Split-Path $PSCommandPath -Parent 
+
+foreach ($file in $files) {
+    New-Item -Path (Join-Path $home $file) -Value (Join-Path $here $file) -ItemType SymbolicLink
+}
