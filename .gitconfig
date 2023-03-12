@@ -5,11 +5,14 @@
 [core]
 	filemode = false
 	autocrlf = input
+	editor = code --wait
 
 [alias]
 	st = status
 	co = checkout
 	sw = switch
+	d = diff
+	ds = diff --staged
 	# from https://blog.toshimaru.net/git-log-graph/
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -19,6 +22,3 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-
-[ghq]
-	user = jprekz
