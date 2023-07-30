@@ -3,14 +3,10 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
-# Source global definitions (RHEL)
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+# Source original definitions
+if [ -f ~/.bashrc.origin ]; then
+    . ~/.bashrc.origin
 fi
-
-# bash options
-HISTCONTROL=erasedups
-HISTIGNORE=cd:ls
 
 # User specific aliases and functions
 alias cp='cp -i'
@@ -33,12 +29,6 @@ darwin*)
     alias lla='ls -AlF --color=auto'
     ;;
 esac
-
-d() {
-    if [ "$@" ]; then
-        \cd "$@"
-    fi && ls -alh --time-style=long-iso
-}
 
 _sysname=`uname -s | sed -e "s/\([a-zA-Z]\+\).*/\1/"`
 if [ "$_sysname" = "Linux" ]; then
