@@ -1,0 +1,9 @@
+# スクリプト動作テスト用
+services:
+  ubuntu:
+    image: ubuntu:latest
+    volumes:
+      - type: bind
+        source: "./"
+        target: "/dotfiles"
+    tty: true
