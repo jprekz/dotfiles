@@ -22,7 +22,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('itchyny/lightline.vim')
   call dein#add('rust-lang/rust.vim')
   call dein#add('racer-rust/vim-racer')
-  call dein#add('w0ng/vim-hybrid')
   call dein#end()
   call dein#save_state()
 endif
@@ -75,7 +74,6 @@ autocmd FileType rust nmap <Space>gd <Plug>(rust-doc)
 " general settings
 "---------------------------------------
 set background=dark
-colorscheme hybrid
 if has('Unix')
   set mouse=a
   set guioptions+=a
@@ -131,8 +129,6 @@ nnoremap Q gq
 " カーソル移動
 noremap j gj
 noremap k gk
-noremap J <C-d>
-noremap K <C-u>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 " F5でvimrcを開く
