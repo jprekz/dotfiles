@@ -1,1 +1,7 @@
 set completion-ignore-case on
+set colored-stats on
+set colored-completion-prefix on
+
+set editing-mode vi
+"\e[A":history-search-backward  # arrow up
+"\e[B":history-search-forward  # arrow down
